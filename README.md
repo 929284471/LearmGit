@@ -6,6 +6,9 @@
 
 TortoiseGit:[https://tortoisegit.org/](https://tortoisegit.org/)
 
+或者直接下载本项目中的软件：git clone git@192.168.1.222:liwei/HelloGit.git(添加了SSH keys，方法[Generate SSH keys](http://192.168.1.222:8081/help/ssh/README))
+
+
 ### 2. 教程相关：
 
 [瘳雪峰的Git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
