@@ -22,3 +22,7 @@ TortoiseGit:[https://tortoisegit.org/](https://tortoisegit.org/)
 [Git分支管理策略](http://www.ruanyifeng.com/blog/2012/07/git.html)
 
 ![分支管理](/uploads/fd38fcf9c55d8a8767ea58e9fac5542a/分支管理.png)
+
+### 4. 大文件的上传方式：(适合上传PSD大文件)
+
+[Git LFS](http://docs.gitlab.com/ce/workflow/lfs/manage_large_binaries_with_git_lfs.html)
