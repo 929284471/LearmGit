@@ -15,6 +15,8 @@ TortoiseGit:[https://tortoisegit.org/](https://tortoisegit.org/)
 
 [git fetch与git pull的区别](http://blog.csdn.net/hudashi/article/details/7664457)
 
+[git使用教程](http://wayearn.com/2016/03/git%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/)
+
 ### 3. 分支管理：
 
 [Git分支管理策略](http://www.ruanyifeng.com/blog/2012/07/git.html)
