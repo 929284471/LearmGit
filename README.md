@@ -4,9 +4,15 @@
 
 官方：[https://git-for-windows.github.io/](https://git-for-windows.github.io/)
 
+SourceTree:[https://www.sourcetreeapp.com/](https://www.sourcetreeapp.com/)
+
 TortoiseGit:[https://tortoisegit.org/](https://tortoisegit.org/)
 
-或者直接下载本项目中的软件：git clone git@192.168.1.222:liwei/HelloGit.git(添加了SSH keys，方法[Generate SSH keys](http://192.168.1.222:8081/help/ssh/README))
+或者直接下载本项目中的软件：[http://192.168.1.222:8081/liwei/HelloGit/tree/master/software](http://192.168.1.222:8081/liwei/HelloGit/tree/master/software "http://192.168.1.222:8081/liwei/HelloGit/tree/master/software")
+
+	git clone git@192.168.1.222:liwei/HelloGit.git
+
+(添加了SSH keys，方法[Generate SSH keys](http://192.168.1.222:8081/help/ssh/README))
 
 
 ## 2. 教程相关：
@@ -334,4 +340,16 @@ Git也允许手动建立追踪关系。
 
 > 代码回撤参考`git reset`命令，获取更新参考`git fetch`命令，分支查看`git branch`，逻辑流程图`gitk`，状态命令`git status`,日志命令`git reflog`与`git log`
 
+## 7. Jetbrains系列IDE使用git
 
+Phpstorm： [Using Git Integration](https://www.jetbrains.com/help/phpstorm/2016.2/using-git-integration.html)
+
+IDEA: [Using Git Integration](https://www.jetbrains.com/help/idea/2016.2/using-git-integration.html)
+
+WEBstrom: [Using Git Integration](https://www.jetbrains.com/help/webstorm/2016.2/using-git-integration.html)
+
+Android Studio:
+
+[https://www.londonappdeveloper.com/how-to-use-git-hub-with-android-studio/](https://www.londonappdeveloper.com/how-to-use-git-hub-with-android-studio/)
+
+[Android Studio中如何使用Git和Github来管理项目](http://blog.csdn.net/wei18359100306/article/details/45645145)
