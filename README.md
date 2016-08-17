@@ -1,6 +1,6 @@
-## 介绍如何使用git及gitlab
+# 介绍如何使用git及gitlab
 
-### 1. git工具
+## 1. git工具
 
 官方：[https://git-for-windows.github.io/](https://git-for-windows.github.io/)
 
@@ -9,7 +9,7 @@ TortoiseGit:[https://tortoisegit.org/](https://tortoisegit.org/)
 或者直接下载本项目中的软件：git clone git@192.168.1.222:liwei/HelloGit.git(添加了SSH keys，方法[Generate SSH keys](http://192.168.1.222:8081/help/ssh/README))
 
 
-### 2. 教程相关：
+## 2. 教程相关：
 
 [瘳雪峰的Git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 
@@ -17,17 +17,17 @@ TortoiseGit:[https://tortoisegit.org/](https://tortoisegit.org/)
 
 [git使用教程](http://wayearn.com/2016/03/git%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/)
 
-### 3. 分支管理：
+## 3. 分支管理：
 
 [Git分支管理策略](http://www.ruanyifeng.com/blog/2012/07/git.html)
 
 ![分支管理](/uploads/fd38fcf9c55d8a8767ea58e9fac5542a/分支管理.png)
 
-### 4. 大文件的上传方式：(适合上传PSD大文件)
+## 4. 大文件的上传方式：(适合上传PSD大文件)
 
 [Git LFS](http://docs.gitlab.com/ce/workflow/lfs/manage_large_binaries_with_git_lfs.html)
 
-### 5. 常用git命令详解
+## 5. 常用git命令详解
 Git是目前最流行的版本管理系统，学会Git几乎成了开发者的必备技能。
 Git有很多优势，其中之一就是远程操作非常简便。本文详细介绍5个Git命令，它们的概念和用法，理解了这些内容，你就会完全掌握Git远程操作。
 
@@ -40,7 +40,7 @@ Git有很多优势，其中之一就是远程操作非常简便。本文详细�
 本文针对初级用户，从最简单的讲起，但是需要读者对Git的基本用法有所了解。同时，本文覆盖了上面5个命令的几乎所有的常用用法，所以对于熟练用户也有参考价值。
 git
 
-#### 一、git clone
+### (1) git clone
 
 远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到`git clone`命令。
 
@@ -69,7 +69,7 @@ SSH协议还有另一种写法。
     
 通常来说，Git协议下载速度最快，SSH协议用于需要用户认证的场合。各种协议优劣的详细讨论请参考官方文档。
 
-#### 二、git remote
+### (2) git remote
 
 为了便于管理，Git要求每个远程主机都必须指定一个主机名。`git remote`命令就用于管理主机名。
 不带选项的时候，`git remote`命令列出所有远程主机。
@@ -104,7 +104,7 @@ SSH协议还有另一种写法。
     
     $ git remote rename <原主机名> <新主机名>
 
-#### 三、git fetch
+### (3) git fetch
 
 一旦远程主机的版本库有了更新（Git术语叫做commit），需要将这些更新取回本地，这时就要用到git fetch命令。
 
@@ -144,7 +144,7 @@ SSH协议还有另一种写法。
     
 上面命令表示在当前分支上，合并origin/master。
 
-#### 四、git pull
+### (4) git pull
 
 `git pull`命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。它的完整格式稍稍有点复杂。
 
@@ -191,7 +191,7 @@ Git也允许手动建立追踪关系。
     $ git fetch --prune origin 
     $ git fetch -p
 
-#### 五、git push
+### (5) git push
 
 `git push`命令用于将本地分支的更新，推送到远程主机。它的格式与`git pull`命令相仿。
 
@@ -243,3 +243,93 @@ Git也允许手动建立追踪关系。
 最后，`git push`不会推送标签（tag），除非使用`--tags`选项。
 
     $ git push origin --tags
+
+## 6.工作流介绍
+
+注：所有工作流建立在已经建立了个人账户，并添加了SSH key到个人的文档中。见Profile Settings → SSH keys → Before you can add an SSH key you need to [generate it].
+
+###1.普通开发人员
+
+**情况一：程序员A是后加入到项目中的，项目已经存在代码仓库。**
+
+如：[git@192.168.1.222:liwei/HelloGit.git](git@192.168.1.222:liwei/HelloGit.git "git@192.168.1.222:liwei/HelloGit.git")
+
+（1）克隆版本仓库
+
+	git clone git@192.168.1.222:liwei/HelloGit.git
+
+（2）建立分支
+
+	git checkout -b (分支名)
+
+（3）提交代码
+
+查看代码修改的状态：
+
+	git status 
+
+添加到工作区：
+
+	git add .
+
+提交到本地仓库：
+
+	git commit -m "（写下提交日志）"
+
+推送到服务器：
+
+	git push origin 分支名
+
+（4）在服务器上建立Merge Request，把自己的提交到远程的分支，Merge到Dev(开发分支)
+
+**情况二：程序员B是在一个新项目中，本地有一些代码，需要建立一个版本控制仓库**
+
+（1）在项目目录下，初始化仓库
+
+	git init
+
+（2）添加到git版本控制系统：
+
+	git remote add origin git@192.168.1.222:liwei/HelloGit.git
+
+（3）添加所有已经存在的文件到项目中：
+
+	git add .
+
+（4）提交代码到本地仓库：
+
+	git commit -m "写下日志"
+
+（5）提交代码远程服务器
+
+	git push origin <本地分支名>：<远程分支名>
+
+	git push origin master:master
+
+> 对于单人项目，情况二足以满足代码控制要求。→吕扬、刘扬。
+
+###2.仓库管理人员
+
+**情况一：手工合并代码**
+
+（1）在指定分支上获取更新
+
+	git checkout <指定分支>
+
+（2）拉取服务器上的代码
+
+	git pull origin <指定分支>
+
+（3）切换到dev，并获取dev上的更新，合并指定分支上的代码
+
+	git checkout dev
+	git pull origin dev
+	git merge <指定分支>
+
+**情况二：直接在gitlab上进行操作**
+
+直接点击accept merge request进行分支合并。
+
+> 代码回撤参考`git reset`命令，获取更新参考`git fetch`命令，分支查看`git branch`，逻辑流程图`gitk`，状态命令`git status`,日志命令`git reflog`与`git log`
+
+
