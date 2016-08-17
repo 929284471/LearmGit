@@ -248,6 +248,7 @@ Git也允许手动建立追踪关系。
 
 注：所有工作流建立在已经建立了个人账户，并添加了SSH key到个人的文档中。见Profile Settings → SSH keys → Before you can add an SSH key you need to [generate it].
 
+
 ### 1.普通开发人员
 
 **情况一：程序员A是后加入到项目中的，项目已经存在代码仓库。**
@@ -307,6 +308,7 @@ Git也允许手动建立追踪关系。
 	git push origin master:master
 
 > 对于单人项目，情况二足以满足代码控制要求。→吕扬、刘扬。
+
 
 ### 2.仓库管理人员
 
