@@ -353,3 +353,37 @@ Android Studio:
 [https://www.londonappdeveloper.com/how-to-use-git-hub-with-android-studio/](https://www.londonappdeveloper.com/how-to-use-git-hub-with-android-studio/)
 
 [Android Studio中如何使用Git和Github来管理项目](http://blog.csdn.net/wei18359100306/article/details/45645145)
+
+## 8. Git恢复流程
+
+项目Git恢复流程：
+
+1.注册账号→输入SSH keys→新建项目。
+
+2.在原项目文件夹下，使用`git remote -v`命令查看
+
+	$ git remote -v
+	origin  git@192.168.1.222:liwei/HelloGit.git (fetch)
+	origin  git@192.168.1.222:liwei/HelloGit.git (push)
+
+使用`git remote remove origin`删除原有仓库地址。
+
+3.使用新的仓库地址：
+
+	git remote add origin [ssh仓库地址]
+
+如：
+
+	git remote add origin ssh://git@192.168.1.222:8082/liwei/HelloGit.git
+
+4.添加文件，并Commit提交，最后push上远程指定分支
+
+	git add .
+
+	git commit -m "add my repo"
+
+	#这条命令会把当前分支，推送到远程的master分支
+	git push origin master 
+
+	#如果需要把dev分支，推送到远程的dev分支
+	git push origin dev:dev
