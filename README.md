@@ -358,6 +358,8 @@ Android Studio:
 
 项目Git恢复流程：
 
+### 方法一：恢复指定分支
+
 1.注册账号→输入SSH keys→新建项目。
 
 2.在原项目文件夹下，使用`git remote -v`命令查看
@@ -387,3 +389,13 @@ Android Studio:
 
 	#如果需要把dev分支，推送到远程的dev分支
 	git push origin dev:dev
+
+### 方法二：
+
+恢复项目所有分支:
+
+	git remote remove origin
+
+	git remote add origin [新的SSH仓库地址]
+
+	git push --mirror ssh://git@192.168.1.222:8082/liwei/LearnPython.git
