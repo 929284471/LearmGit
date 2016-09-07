@@ -399,3 +399,52 @@ Android Studio:
 	git remote add origin [新的SSH仓库地址]
 
 	git push --mirror ssh://git@192.168.1.222:8082/liwei/LearnPython.git
+
+## 9. 本地多个SSH key的问题
+
+有的时候，不仅github使用ssh key，工作项目或者其他云平台可能也需要使用ssh key来认证，如果每次都覆盖了原来的id_rsa文件，那么之前的认证就会失效。这个问题我们可以通过在~/.ssh目录下增加config文件来解决。
+
+1.第一步依然是配置git用户名和邮箱
+	
+	git config user.name "用户名"
+	git config user.email "邮箱"
+
+2.生成ssh key时同时指定保存的文件名
+
+	ssh-keygen -t rsa -f ~/.ssh/id_rsa.company -C "email"
+
+上面的`id_rsa.company`就是我们指定的文件名，这时~/.ssh目录下会多出`id_rsa.company`和`id_rsa.company.pub`两个文件，`id_rsa.company.pub`里保存的就是我们要使用的key。
+
+3.新增并配置config文件
+
+添加config文件
+
+如果config文件不存在，先添加；存在则直接修改
+	
+	touch ~/.ssh/config
+在config文件里添加如下内容(User表示你的用户名)
+
+	Host 域名或者IP
+	    IdentityFile ~/.ssh/id_rsa.company
+	    User test
+如：
+
+	Host 192.168.1.222
+    IdentityFile ~/.ssh/id_rsa.company
+    User liwei
+
+4.上传key到云平台后台(省略)
+
+5.测试ssh key是否配置成功
+	
+	ssh -T git@域名或者IP
+
+如：
+
+	ssh -T git@192.168.1.222 -p 8082
+
+成功的话会显示：
+	
+	Welcome to GitLab, liwei!
+
+至此，本地便成功配置多个ssh key。日后如需添加，则安装上述配置生成key，并修改config文件即可。
