@@ -1,3 +1,0 @@
-[submodule "lib/sub1"]
-	path = lib/sub1
-	url = ssh://git@192.168.1.222:8082/liwei/Submodules.git

@@ -448,3 +448,86 @@ Android Studio:
 	Welcome to GitLab, liwei!
 
 至此，本地便成功配置多个ssh key。日后如需添加，则安装上述配置生成key，并修改config文件即可。
+
+## 10.子模块`git submodule`应用
+
+当有多人协作，多个项目目录和仓库的时候，使用submodule功能就非常的方便了。我们先来假设项目的目录如下：
+	
+	porject
+		├─src
+		└─lib
+		    ├─sub1
+		    └─sub2
+
+这是常见的项目目录，引用库在lib中，可能有sub1、sub2...很多别人也参与的本项目的引用库。拷贝多次可能会出现版本问题，而且，作了修改，也不能在他人的项目仓库中进行跟踪，这是很不方便的。那么`git submodule`就可以很好的解决以上的问题：
+
+（1）创建子模块：
+
+例：有一个其他的git仓库：[ssh://git@192.168.1.222:8082/liwei/Submodules.git](ssh://git@192.168.1.222:8082/liwei/Submodules.git "ssh://git@192.168.1.222:8082/liwei/Submodules.git")
+
+	git submodule add [仓库地址] [指定本地目录]
+
+	git submodule add ssh://git@192.168.1.222:8082/liwei/Submodules.git lib/sub1
+
+（2）初始化&&获取更新
+
+	git submodule init
+
+	git submodule update
+
+	cd lib/sub
+
+> 你会发现在这个目录下，所有的git命令照常使用！可以对此仓库的代码进行管理。
+
+（3）删除子模块
+
+方法一：
+
+	// Remove the submodule entry from .git/config
+	git submodule deinit -f path/to/submodule
+	
+	// Remove the submodule directory from the superproject's .git/modules directory
+	rm -rf .git/modules/path/to/submodule
+	
+	// Remove the entry in .gitmodules and remove the submodule directory located at path/to/submodule
+	git rm -f path/to/submodule
+
+	// Get rid of directory, only when you do not need submodule any more
+	rm -rf path/ .git/module/path .gitmodules
+
+方法二：
+
+(1)安装git-extras
+
+Debian
+	
+	$ sudo $apt_pref update
+	$ sudo $apt_pref install git-extras
+Fedora
+	
+	$ sudo dnf install git-extras
+Ubuntu
+	
+	$ sudo apt-get install git-extras
+Mac OS X with Homebrew
+	
+	$ brew install git-extras
+
+Windows
+
+	git clone https://github.com/tj/git-extras.git
+	cd git-extras
+	# checkout the latest tag (optional)
+	git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
+
+use `win+R`, `cmd` +`enter`
+
+	cd /project/path/to/git-extras
+	
+	install.cmd "C:\git"
+
+(2)使用命令：`git-delete-submodule submodulename`
+
+> 该命令会保留`.gitmodules文件` 及文件目录，如果需要删除目录，需要手动删除`rm -rf /path/to/file .git/modules/path/to/file .gitmodules`
+
+	
